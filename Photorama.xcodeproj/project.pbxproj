@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		50DD25971C8420E400A3AAE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD25961C8420E400A3AAE2 /* AppDelegate.swift */; };
-		50DD25991C8420E400A3AAE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD25981C8420E400A3AAE2 /* ViewController.swift */; };
 		50DD259C1C8420E400A3AAE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50DD259A1C8420E400A3AAE2 /* Main.storyboard */; };
 		50DD259E1C8420E400A3AAE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DD259D1C8420E400A3AAE2 /* Images.xcassets */; };
 		50DD25A11C8420E400A3AAE2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50DD259F1C8420E400A3AAE2 /* LaunchScreen.xib */; };
 		50DD25AD1C8420E500A3AAE2 /* PhotoramaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD25AC1C8420E500A3AAE2 /* PhotoramaTests.swift */; };
+		50DD25B91C8423DC00A3AAE2 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD25B81C8423DC00A3AAE2 /* PhotosViewController.swift */; };
+		50DD25BB1C8428CF00A3AAE2 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD25BA1C8428CF00A3AAE2 /* FlickrAPI.swift */; };
+		50DD25BD1C842F2B00A3AAE2 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD25BC1C842F2B00A3AAE2 /* PhotoStore.swift */; };
+		50DD25BF1C84330900A3AAE2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD25BE1C84330900A3AAE2 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +32,16 @@
 		50DD25911C8420E400A3AAE2 /* Photorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DD25951C8420E400A3AAE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50DD25961C8420E400A3AAE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		50DD25981C8420E400A3AAE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		50DD259B1C8420E400A3AAE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50DD259D1C8420E400A3AAE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		50DD25A01C8420E400A3AAE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		50DD25A61C8420E500A3AAE2 /* PhotoramaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoramaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DD25AB1C8420E500A3AAE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50DD25AC1C8420E500A3AAE2 /* PhotoramaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoramaTests.swift; sourceTree = "<group>"; };
+		50DD25B81C8423DC00A3AAE2 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		50DD25BA1C8428CF00A3AAE2 /* FlickrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
+		50DD25BC1C842F2B00A3AAE2 /* PhotoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
+		50DD25BE1C84330900A3AAE2 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				50DD25961C8420E400A3AAE2 /* AppDelegate.swift */,
-				50DD25981C8420E400A3AAE2 /* ViewController.swift */,
+				50DD25B81C8423DC00A3AAE2 /* PhotosViewController.swift */,
+				50DD25BA1C8428CF00A3AAE2 /* FlickrAPI.swift */,
+				50DD25BC1C842F2B00A3AAE2 /* PhotoStore.swift */,
+				50DD25BE1C84330900A3AAE2 /* Photo.swift */,
 				50DD259A1C8420E400A3AAE2 /* Main.storyboard */,
 				50DD259D1C8420E400A3AAE2 /* Images.xcassets */,
 				50DD259F1C8420E400A3AAE2 /* LaunchScreen.xib */,
@@ -212,8 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50DD25991C8420E400A3AAE2 /* ViewController.swift in Sources */,
+				50DD25BB1C8428CF00A3AAE2 /* FlickrAPI.swift in Sources */,
+				50DD25B91C8423DC00A3AAE2 /* PhotosViewController.swift in Sources */,
+				50DD25BD1C842F2B00A3AAE2 /* PhotoStore.swift in Sources */,
 				50DD25971C8420E400A3AAE2 /* AppDelegate.swift in Sources */,
+				50DD25BF1C84330900A3AAE2 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +351,7 @@
 				INFOPLIST_FILE = Photorama/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -349,6 +362,7 @@
 				INFOPLIST_FILE = Photorama/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -405,6 +419,7 @@
 				50DD25B21C8420E500A3AAE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50DD25B31C8420E500A3AAE2 /* Build configuration list for PBXNativeTarget "PhotoramaTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +428,7 @@
 				50DD25B51C8420E500A3AAE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
