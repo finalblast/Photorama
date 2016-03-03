@@ -4,7 +4,7 @@
 //
 //  Created by Nam (Nick) N. HUYNH on 2/29/16.
 //  Copyright (c) 2016 Enclave. All rights reserved.
-//
+//z
 
 import UIKit
 
@@ -14,6 +14,12 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var collectionView: UICollectionView!
     var photoStore: PhotoStore!
     let photoDataSource = PhotoDataSource()
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        collectionView.reloadData()
+        
+    }
     
     override func viewDidLoad() {
     
@@ -26,21 +32,12 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             (photosResult) -> Void in
             
+            let sortByDateTaken = NSSortDescriptor(key: "dateTaken", ascending: true)
+            let allPhotos = self.photoStore.fetchMainQueuePhotos(predicate: nil, sortDescriptors: [sortByDateTaken])
+            println("Found \(allPhotos.count)")
             NSOperationQueue.mainQueue().addOperationWithBlock() {
                 
-                switch photosResult {
-                    
-                case let PhotosResult.Success(photos):
-                    
-                    println("Found: \(photos.count)")
-                    self.photoDataSource.photos = photos
-                    
-                case let PhotosResult.Failure(_):
-                    
-                    self.photoDataSource.photos.removeAll()
-                    
-                }
-                
+                self.photoDataSource.photos = allPhotos
                 self.collectionView.reloadSections(NSIndexSet(index: 0))
                 
             }
@@ -63,7 +60,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 if let cell = collectionView.cellForItemAtIndexPath(photoIndexPath) as? PhotoCollectionViewCell {
                     
-                    cell.updateWithImage(photo.image)
+                    cell.updateWithPhoto(photo)
                     
                 }
                 

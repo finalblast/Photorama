@@ -11,7 +11,18 @@ import UIKit
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var numberOfViews: UILabel!
     @IBOutlet var spinner: UIActivityIndicatorView!
+    
+    var viewCount: Int! {
+        
+        didSet {
+            
+            numberOfViews.text = "\(viewCount)"
+            
+        }
+        
+    }
     
     override func awakeFromNib() {
         
@@ -24,6 +35,21 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         
         super.prepareForReuse()
         updateWithImage(nil)
+        
+    }
+
+    func updateWithPhoto(photo: Photo?) {
+        
+        if let currentPhoto = photo {
+            
+            updateWithImage(currentPhoto.image)
+            viewCount = currentPhoto.numberOfViews.integerValue
+            
+        } else {
+            
+            updateWithImage(nil)
+            
+        }
         
     }
     

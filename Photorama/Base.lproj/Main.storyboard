@@ -20,7 +20,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5LQ-QZ-u7s">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="3LS-E3-ffQ" customClass="PhotoCollectionViewFlowLayout" customModule="Photorama" customModuleProvider="target">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="3LS-E3-ffQ">
                                     <size key="itemSize" width="90" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -40,6 +40,12 @@
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="A0L-Ja-wOx">
                                                     <rect key="frame" x="35" y="35" width="20" height="20"/>
                                                 </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaE-AO-hgf">
+                                                    <rect key="frame" x="80" y="0.0" width="10" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -48,12 +54,15 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="ZJ5-UB-eVQ" secondAttribute="bottom" constant="-8" id="B6x-8S-5d7"/>
                                             <constraint firstAttribute="centerY" secondItem="A0L-Ja-wOx" secondAttribute="centerY" id="U2y-s7-Cda"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="ZJ5-UB-eVQ" secondAttribute="trailing" constant="-8" id="c74-Ag-IH8"/>
+                                            <constraint firstItem="HaE-AO-hgf" firstAttribute="top" secondItem="2N3-KF-r4h" secondAttribute="topMargin" constant="-8" id="cCA-79-Bc5"/>
                                             <constraint firstItem="ZJ5-UB-eVQ" firstAttribute="top" secondItem="2N3-KF-r4h" secondAttribute="topMargin" constant="-8" id="mz1-YH-jTG"/>
                                             <constraint firstItem="ZJ5-UB-eVQ" firstAttribute="leading" secondItem="2N3-KF-r4h" secondAttribute="leadingMargin" constant="-8" id="nX3-tk-pPo"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="HaE-AO-hgf" secondAttribute="trailing" constant="-8" id="qUa-LY-GdK"/>
                                             <constraint firstAttribute="centerX" secondItem="A0L-Ja-wOx" secondAttribute="centerX" id="rMW-8t-dN2"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="ZJ5-UB-eVQ" id="eEa-bD-Wql"/>
+                                            <outlet property="numberOfViews" destination="HaE-AO-hgf" id="Uzf-jt-9cx"/>
                                             <outlet property="spinner" destination="A0L-Ja-wOx" id="LpU-nk-8P7"/>
                                             <segue destination="qZm-me-aFY" kind="show" identifier="ShowPhoto" id="RYd-P9-5dl"/>
                                         </connections>

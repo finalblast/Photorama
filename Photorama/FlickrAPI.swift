@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 enum Method: String {
     
@@ -77,7 +78,7 @@ struct FlickrAPI {
         
     }
     
-    static func photosFromJSONData(data: NSData) -> PhotosResult {
+    static func photosFromJSONData(data: NSData, inContext context: NSManagedObjectContext) -> PhotosResult {
         
         var error: NSError?;
         
@@ -92,13 +93,15 @@ struct FlickrAPI {
             
             for photoJSON in photosArray {
                 
-                if let photo = photosFromJSONObject(photoJSON) {
+                if let photo = photosFromJSONObject(photoJSON, inContext: context) {
                     
                     finalPhotos.append(photo)
                     
                 }
                 
             }
+            
+            println("Photos: \(finalPhotos.count)")
             
             return PhotosResult.Success(finalPhotos)
             
@@ -110,7 +113,7 @@ struct FlickrAPI {
         
     }
     
-    static func photosFromJSONObject(json:[String: AnyObject]) -> Photo? {
+    static func photosFromJSONObject(json:[String: AnyObject], inContext context: NSManagedObjectContext) -> Photo? {
         
         let photoURLString = json["url_h"] as? String
         
@@ -122,7 +125,36 @@ struct FlickrAPI {
             let dateString = json["datetaken"] as String
             
             let dateTaken = dateFormatter.dateFromString(dateString)
-            return Photo(title: title, remoteURL: url!, photoID: photoID, dateTaken: dateTaken!)
+            
+            let fetchRequest = NSFetchRequest(entityName: "Photo")
+            let predicate = NSPredicate(format: "photoID == \(photoID)")
+            fetchRequest.predicate = predicate
+            
+            var fetchedPhotos: [Photo]!
+            context.performBlockAndWait() {
+                
+                fetchedPhotos = context.executeFetchRequest(fetchRequest, error: nil) as [Photo]
+                
+            }
+            
+            if fetchedPhotos.count > 0 {
+                
+                return fetchedPhotos.first
+                
+            }
+            
+            var photo: Photo!
+            context.performBlockAndWait() {
+                
+                photo = NSEntityDescription.insertNewObjectForEntityForName("Photo", inManagedObjectContext: context) as Photo
+                photo.title = title
+                photo.photoID = photoID
+                photo.remoteURL = url!
+                photo.dateTaken = dateTaken!
+                
+            }
+            
+            return photo
             
         }
         

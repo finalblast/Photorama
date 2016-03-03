@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PhotoInfoViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class PhotoInfoViewController: UIViewController {
         }
         
     }
+    
     
     var store: PhotoStore!
     
@@ -39,6 +41,11 @@ class PhotoInfoViewController: UIViewController {
                         self.imageView.image = image
                         
                 }
+                
+                let viewCount = self.photo.numberOfViews
+                self.photo.numberOfViews = NSNumber(integer: viewCount.integerValue + 1)
+                    
+                self.store.coreDataStack.saveChanges()
                 
             case let ImageResult.Failure(_):
                 break
